@@ -1,3 +1,14 @@
+class StringUtils
+  
+  @containsAlphaChar = (s) ->
+    for c in s
+      if (c >= "A" and c<= "Z") or (c >= "a" and c <= "z")
+        return true
+    false
+  
+  @isUpperCase = (s) ->
+    s.toUpperCase() == s
+
 class Bob
   
   MsgKind =
@@ -5,15 +16,6 @@ class Bob
     mkA: 'mkA'
     mkY: 'mkY'
     mkN: 'mkN'
-  
-  containsAlphaChar = (s) ->
-    for c in s
-      if (c >= "A" and c<= "Z") or (c >= "a" and c <= "z")
-        return true
-    false
-  
-  isUpperCase = (s) ->
-    s.toUpperCase() == s
   
   identifyMsgKinds = (msg) ->
     msgKinds = MsgKind.mk0
@@ -25,7 +27,7 @@ class Bob
       if msgTrimmed.endsWith("?")
         #msgKinds += MsgKind.mkA
         msgKinds = MsgKind.mkA
-      if containsAlphaChar(msgTrimmed) and isUpperCase(msgTrimmed)
+      if StringUtils.containsAlphaChar(msgTrimmed) and StringUtils.isUpperCase(msgTrimmed)
         #msgKinds += MsgKind.mkY
         msgKinds = MsgKind.mkY
     msgKinds
