@@ -7,7 +7,7 @@ class WordCount
   count: ->
     @wordCount = {}
     for w in @words
-      if @wordCount[w] then @wordCount[w] += 1 else @wordCount[w] = 1
+      @wordCount[w] = (@wordCount[w] or 0) + 1
     @wordCount
 
 module.exports = WordCount
